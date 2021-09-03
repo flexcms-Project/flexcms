@@ -10,18 +10,18 @@ Flexcms a open source website content management system, that allow you to creat
 - create an .env file in the app root
 - fill the attributes of the .env file with these variables, ane make sure you change the value of these variables
 =================================================
-NODE_ENV = development
-MAX_DATA_PARSE = 4mb
-PORT = 3000
+- NODE_ENV = development
+- MAX_DATA_PARSE = 4mb
+- PORT = 3000
 
-PGUSER = yourPostgresUsername
-PGPASSWORD = yourPostgresPassword
-PGDATABASE = yourPostgresDatabase
-PGHOST = 127.0.0.1
-PGPORT =  5432
+- PGUSER = yourPostgresUsername
+- PGPASSWORD = yourPostgresPassword
+- PGDATABASE = yourPostgresDatabase
+- PGHOST = 127.0.0.1
+- PGPORT =  5432
 
-TOKEN_SECRET = randomStringYouWantToPut
-TOKEN_AGE_IN_DAY = 3
+- TOKEN_SECRET = randomStringYouWantToPut
+- TOKEN_AGE_IN_DAY = 3
 ==================================================
 
 after you create the .env file on the top, now install the app with these command 
