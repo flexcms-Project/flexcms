@@ -9,7 +9,7 @@ Flexcms a open source website content management system, that allow you to creat
 ## How to Install the Flexcms
 - create an .env file in the app root
 - fill the attributes of the .env file with these variables, ane make sure you change the value of these variables
-|=================================================
+* |=================================================
 - NODE_ENV = development
 - MAX_DATA_PARSE = 4mb
 - PORT = 3000
@@ -22,7 +22,7 @@ Flexcms a open source website content management system, that allow you to creat
 
 - TOKEN_SECRET = randomStringYouWantToPut
 - TOKEN_AGE_IN_DAY = 3
-|==================================================
+* |==================================================
 
 after you create the .env file on the top, now install the app with these command 
 - make sure you have nodeJS already installed
