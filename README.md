@@ -29,12 +29,12 @@ after you create the .env file on the top, now install the app with these comman
 - use vscode or any other IDE 
 - open the folder of the app
 - now if you use the vscode and the app's folder already opened, write these command on the terminal
-  npm install
-  npm run db-create
-  npm run db-migrate-up
-  npm run install-views
+  * npm install
+  * npm run db-create
+  * npm run db-migrate-up
+  * npm run install-views
 - after all of the command on the top has been done, you can use npm run start-dev to start the app
-  npm run start-dev
+  * npm run start-dev
 
 
 
