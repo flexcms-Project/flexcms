@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <!-- importing the css/stylesheet -->
+    <link rel="stylesheet" href="/asset/css/global.css">
+    <link rel="stylesheet" href="/asset/css/nav.css">
+    <link rel="stylesheet" href="/asset/css/editprofile.css">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('parts/userNavbar2', {}); %>
+
+    <!-- Main-part -->
+    <div class="container container-form">
+       <form action="/users/setting" method="POST" enctype="multipart/form-data">
+           <div class="about">
+               <h1>Edit Profile disini</h1>
+           </div>
+           <div class="edit">
+            <div class="profile">
+                <h4>ganti Foto</h4>
+              <div class="profile-pict">
+                 <input type="file" onchange="loadimg(event)" name="profilePicture">
+                 <% let profilePicture = '/' + data.user.profilePicture %>
+                 <img src = <%= profilePicture %> id="imgplace">
+              </div>
+            </div>
+            <div class="other">
+                <label for="name">name</label>
+                <% let username = data.user.name.split(' ') %>
+                <input type="text" name="name" placeholder="nama" id="name" required minlength="6"  value= <%= username.join(' ') %> >
+                <label for="deskripsi">about</label>
+                <textarea name="about" id="deskripsi" cols="30" rows="10" placeholder="deskripsi" ><%= data.user.about %></textarea>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="input your password to save the change" required minlength="6">
+                <% if(typeof message != "undefined"){ %>
+                    <label style="color: red;"><%= message %></label>
+                <% } %>
+                 <button>change</button>
+             </div>
+           </div>
+       </form>
+    </div>
+
+    <!-- import the js -->
+    <script src="/asset/js/editprofile.js"></script>
+</body>
+</html>

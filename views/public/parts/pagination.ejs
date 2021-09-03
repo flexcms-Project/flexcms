@@ -1,0 +1,39 @@
+<% const url = typeof URL != 'function'? URL: '/'; %>
+<% const qry = typeof query != 'undefined'? query: ''; %>
+<div class="flex toggle-pagination mx-auto items-center dark:text-white ">
+    <% if(articles.articlesPaginate.page != 1) { %>
+        <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page-1}` %> class="mr-2 bg-bg-card px-2 py-1 dark:bg-gray-700"><<</a>
+    <% } %>
+        
+    <% if(articles.articlesPaginate.totalPages == 0){ %>
+
+    <% }else if(articles.articlesPaginate.totalPages == 1 ){ %>
+        <a class="mx-1 bg-main-blue px-3 py-1 dark:bg-gray-900">1</a>
+    <% }else if(articles.articlesPaginate.totalPages == 2 ){ %>
+        <% if(articles.articlesPaginate.page == 2) { %>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page-1}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700"><%- articles.articlesPaginate.page-1 %></a>
+            <a class="mx-1 bg-main-blue px-3 py-1 dark:bg-gray-900"><%- articles.articlesPaginate.page %></a>
+        <% }else{ %>
+            <a class="mx-1 bg-main-blue px-3 py-1 dark:bg-gray-900"><%- articles.articlesPaginate.page %></a>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page+1}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700"><%- articles.articlesPaginate.page+1 %></a>
+        <% } %>
+    <% }else{ %>
+        <% if(articles.articlesPaginate.page == 1){ %>
+            <a class="mx-1 bg-main-blue px-3 py-1 dark:bg-gray-900">1</a>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page+1}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700">2</a>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page+2}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700">3</a>
+        <% }else if(articles.articlesPaginate.page == articles.articlesPaginate.totalPages){ %>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page-2}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700"><%= articles.articlesPaginate.page-2 %></a>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page-1}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700"><%= articles.articlesPaginate.page-1 %></a>
+            <a class="mx-1 bg-main-blue px-3 py-1 dark:bg-gray-900"><%= articles.articlesPaginate.page %></a>
+        <% }else{ %>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page-1}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700"><%= articles.articlesPaginate.page-1 %></a>
+            <a class="mx-1 bg-main-blue px-3 py-1 dark:bg-gray-900"><%= articles.articlesPaginate.page %></a>
+            <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page+1}` %> class="mx-1 bg-bg-card px-3 py-1 dark:bg-gray-700"><%= articles.articlesPaginate.page+1 %></a>
+        <% } %>
+    <% } %>
+
+    <% if(articles.articlesPaginate.page != articles.articlesPaginate.totalPages) { %>
+        <a href=<%- `${url}?srch=${qry}&pg=${articles.articlesPaginate.page+1}` %> class="mr-2 bg-bg-card px-2 py-1 dark:bg-gray-700">>></a>
+    <% } %>
+</div>

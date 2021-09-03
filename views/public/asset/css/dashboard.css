@@ -1,0 +1,278 @@
+.dashboard-container {
+    width: var(--global-width);
+    margin: 10px auto ;
+    color: var(--primary-text);
+    padding: 15px ;
+}
+
+.info {
+    text-align: center ;
+    background-color : var(--primary-color);
+    padding: 20px ;
+    border-radius: 5px ;
+}
+
+.info-text {
+    text-align: center ;
+}
+
+.info-text h1 {
+    font-size: 26px ;
+    display: flex ;
+    align-items: center ;
+    justify-content: space-between ;
+    margin: auto ;
+    width: 190px ;
+}
+
+.card-info-list {
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-around ;
+}
+
+.card-info {
+    width: 200px ;
+    height: 60px ;
+    background-color:  #15bae7;
+    display: flex ;
+    flex-direction: column ;
+    justify-content: space-around ;
+    align-items: center ;
+    border-radius: 5px ;
+}
+
+.card-info h2 {
+    font-size: 20px ;
+}
+
+.card-info p {
+    font-size: 18px ;
+}
+
+.article-container {
+    margin: 20px auto ;
+    display: flex ;
+    border-radius: 5px ;
+    justify-content: space-between ;
+}
+
+.account-manage {
+    width: 260px ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+    padding: 20px 0 ;
+    background-color: var(--secondary-color);
+    height: 250px ;
+    margin-top: 30px ;
+}
+
+.account-manage a {
+    color: var(--primary-text);
+    text-decoration: none ;
+    width: 200px ;
+    background-color: var(--primary-color);
+    text-align: center ;
+    padding: 10px 0;
+    border-radius: 4px ;
+    display: flex ;
+    align-items: center ;
+    justify-content: space-evenly ;
+    font-size: 17px ;
+    margin: 10px 0 ;
+}
+
+.account-manage p {
+    color: var(--primary-color );
+}
+
+.web-manage {
+    width: 260px ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+    padding: 20px 0 ;
+    background-color: var(--secondary-color);
+    height: 300px ;
+}
+
+.web-manage p {
+    color: var(--primary-color );
+}
+
+.web-manage a:hover ,.account-manage a:hover{
+    background-color:  #1e5463 ;
+}
+
+.web-manage a {
+    color: var(--primary-text);
+    text-decoration: none ;
+    width: 200px ;
+    background-color: var(--primary-color);
+    text-align: center ;
+    padding: 10px 0;
+    border-radius: 4px ;
+    display: flex ;
+    align-items: center ;
+    justify-content: space-evenly ;
+    font-size: 17px ;
+    margin: 10px 0 ;
+}
+
+.article-list {
+    width: 70%  ;
+    background-color: var(--secondary-color);
+    height: 500px ;
+    border-radius: 5px ;
+    overflow-x: hidden ;
+}
+
+.article-card {
+    background-color: var(--primary-color);
+    width: 90% ;
+    margin: 10px auto ;
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-between ;
+    padding: 10px ;
+    align-items: center ;
+    border-radius: 5px ;
+}
+
+.article-card .left-card {
+    display: flex ;
+    flex-direction: column ;
+    width: 70% ;
+    justify-content: space-between ;
+    margin-left: 10px ;
+}
+
+.article-card .left-card h3 {
+    font-size: 16px ;
+    font-weight: 500 ;
+}
+
+.article-card .left-card p {
+    font-size: 14px ;
+    font-weight: 100 ;
+    margin-top: 10px ;
+    display: flex ;
+    align-items: center ;
+}
+
+.article-card img {
+    width: 80px ;
+    height: 80px ;
+    object-fit: cover ;
+}
+
+.article-card .left-card span {
+    margin-left: 15px ;
+    display: flex ;
+    align-items: center ;
+}
+
+.article-card .left-card ion-icon {
+    margin-right : 5px ;
+}
+
+.article-card .right-card {
+    display: flex ;
+    flex-direction: column ;
+    width:  20% ;
+}
+
+.article-card .right-card a {
+    text-decoration: none ;
+    display: flex ;
+    align-items: center ;
+    justify-content: space-around ;
+    color: var(--primary-color);
+    margin: 10px auto ;
+    text-align: center ;
+    background-color: var(--secondary-color);
+    width: 130px ;
+    font-size: 14px ;
+    padding: 6px 0 ;
+    border-radius: 5px ;
+}
+
+[x-cloak] {
+    display: none;
+}
+
+.duration-300 {
+    transition-duration: 300ms;
+}
+
+.ease-in {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-out {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.scale-90 {
+    transform: scale(.9);
+}
+
+.scale-100 {
+    transform: scale(1);
+}
+
+@media only screen and (max-width : 700px ){
+    .card-info-list {
+        flex-direction: column ;
+        align-items: center ;
+    }
+
+    .card-info {
+        margin: 15px 0 ;
+    }
+
+    .article-container {
+        flex-direction: column ;
+        align-items: center ;
+    }
+
+    .article-list {
+        width: 340px ;
+        margin-top: 20px ;
+        align-items: center;
+        order: 1 ;
+    }
+
+    .manage-list {
+        order: 2 ;
+        margin-top: 30px ;
+    }
+
+    .article-card {
+        width: 320px ;
+        flex-direction: column ;
+        align-items: center ;
+    }
+
+    .article-card img {
+        margin: 10px 0 ;
+    }
+
+    .article-card .right-card {
+        width: 320px ;
+        align-items: center ;
+        margin: auto ;
+    }
+
+    .article-card .left-card {
+        width: 320px ;
+        align-items: center ;
+        margin: auto ;
+        text-align: center ;
+        margin: 10px 0 ;
+    }
+
+}
+
+

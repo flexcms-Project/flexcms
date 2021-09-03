@@ -1,0 +1,34 @@
+nav {
+    background-color: var(--primary-color);
+    color: var(--primary-text);
+    padding: 5px ;
+}
+
+nav .container {
+    margin: 0  ;
+    display: flex ;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .container a {
+    border: 10px ;
+    padding: 1px 3px ;
+    color: var(--secondary-color);
+    cursor: pointer ;
+    transition: 0.5s ease ;
+    text-decoration: none ;
+    border-radius: 2px ;
+    margin: 0 5px ;
+}
+
+
+.nav-logo {
+    font-size: 20px ;
+}
+
+@media only screen and (max-width: 660px ){
+    nav .container a {
+        font-size: 12px ;
+    }
+}

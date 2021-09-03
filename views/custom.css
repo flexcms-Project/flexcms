@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* custom css */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.post img {
+    width: 180px ;
+    height: 130px ;
+    object-fit: cover ;
+}
+
+.about img {
+    width: 80px ;
+    height: 80px ;
+}
+
+article img {
+    width: 160px ;
+    height: 160px ;
+    margin: 5px 0;
+    border-radius: 20px ;
+
+}

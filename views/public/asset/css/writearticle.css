@@ -1,0 +1,95 @@
+.container {
+    margin: 20px auto ;
+    background-color: var(--primary-color);
+    padding: 0 10px ;
+}
+
+.text-icon {
+    text-align: center ;
+    display: flex ;
+    flex-direction: column ;
+    margin: 20px auto ;
+    color: var(--primary-text);
+}
+
+.text-icon h1 {
+    margin-top: 30px ;
+}
+
+form {
+    display: flex ;
+    flex-direction: column ;
+}
+
+form button {
+    width: 80% ;
+    margin: 10px auto ;
+    border-radius: 5px ;
+    padding: 8px 5px ;
+    border: none ;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer ;
+}
+
+form button:hover {
+    background-color: var(--tertiary-color);
+}
+
+.judul {
+    width: 50% ;
+    margin: 10px ;
+    display: flex ;
+    justify-content: space-between ;
+    color: var(--primary-text);
+    align-items: center ;
+}
+
+.judul input {
+    width: 80% ;
+    margin-left: 10px ;
+    border: none ;
+    background-color: var(--tertiary-color);
+    color: black;
+    padding: 5px;
+}
+
+.judul input:focus {
+    outline: none ;
+}
+
+.content ,.editor{
+   background-color: #FFFF ;
+}
+
+.ql-editor {
+    height: 300px ;
+}
+
+.ql-editor img {
+    width: 330px  ;
+    height: 300px ;
+    margin: 15px 0;
+    border-radius: 4px ;
+    object-fit: cover ;
+ 
+}
+
+.ql-toolbar {
+    background-color: #FFFF ;
+
+}
+
+
+@media only screen and (max-width: 660px ){
+    .judul  {
+        width: 90% ;
+        flex-direction: column ;
+    }
+
+    .judul input {
+        width: 90% ;
+        margin-top: 10px ;
+        font-size: 15px  ;
+    }
+}   

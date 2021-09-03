@@ -1,0 +1,22 @@
+<nav class="px-3 py-2 flex-col md:flex-row bg-main-blue dark:bg-gray-900 text-center md:text-left flex justify-between z-20">
+    <div class="nav-brand text-2xl items-center font-normal flex justify-between w-full text-white sm:flex sm:justify-between md:w-5/12">
+        <a href="/">web cms</a>
+        <button class="text-2xl text-white  block md:hidden toggle">
+            <ion-icon name="reorder-three-outline" class="open block"></ion-icon>
+            <ion-icon name="close-outline" class="close hidden"></ion-icon>
+           </button>
+    </div>
+   <div class="nav-link flex-col md:flex-row md:w-5/12  hidden md:flex lg:w-4/12 xl:w-4/12  justify-between items-center">
+        <a href="/" class=" text-sm text-white my-5 md:my-0">Home</a>
+        <% if(sub != null) { %>
+            <a href="/users"  class=" text-sm text-white my-5 md:my-0">Dashboard</a>
+        <% } %>
+        <button class="text-main-text text-sm dark:bg-gray-600 px-2 py-1 dark:text-white bg-body-bg my-5 md:my-0">
+            <ion-icon name="sunny-outline" class="block dark:hidden"></ion-icon>
+            <ion-icon name="moon-outline" class="hidden dark:block"></ion-icon>
+        </button>
+        <form action="/search" method="GET">
+            <input type="text" placeholder="cari sesuatu" name="srch" required autocomplete="off" class="px-2 py-1 text-sm md:w-40 rounded-md focus:outline-none my-5 md:my-0 w-60">
+        </form>       
+    </div>
+</nav>

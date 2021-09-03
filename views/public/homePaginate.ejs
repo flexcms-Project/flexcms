@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"  class="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web cms</title>
+    <link rel="stylesheet" href="tailwind.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-body-bg dark:bg-gray-800">
+    <!-- NAVBAR -->
+    <%- include('parts/navbar', {sub: sub}); %>
+
+    <div class="container mx-auto my-7 flex flex-col">
+
+        <!-- post utama & other post -->
+        <h3 class="text-main-text dark:text-white text-center my-5 text-xl">Page <%= articles.articlesPaginate.page %></h3>
+        <div class="flex mx-auto lg:w-8/12 flex-col ">
+            <!-- Post pagination -->
+            <div class="flex article-list-other flex-wrap flex mx-auto">
+                <% for(let article of articles.articlesPaginate.rows) { %>
+                    <a href= <%= `/${article.url}` %> class="card-other  w-5/6 md:w-5/12 lg:w-4/6 xl:w-5/12 bg-bg-card dark:bg-gray-700 rounded-lg mb-4 mx-auto hover:shadow-xl transform hover:-translate-y-1 transition duration-200">
+                        <%- article.thumbnail %>
+                    <div class="py-2 px-5 dark:text-white">
+                        <h2 class="text-text-main text-base my-2 font-bold text-main-text dark:text-white">
+                            <%= article.title? article.title.split(' ').slice(0, 20).join(' '): 'title not found' %>  
+                        </h2>
+                        <p class="text-xs text-color-p dark:text-white">
+                            <%= article.description? article.description.split(' ').slice(0, 40).join(' '): 'description not found' %>                              
+                        </p>
+                        <div class="flex text-xs justify-between mt-5 xl:w-5/6 text-color-p dark:text-white">
+                            <div class="flex justify-between items-center">
+                                <ion-icon name="calendar-outline" class="mr-2"></ion-icon>
+                                <p><%= article.createdAt? article.createdAt.toUTCString().split(' ').slice(1, 4).join(' '): 'date not found' %></p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <ion-icon name="person-outline" class="mr-2"></ion-icon>
+                                <p><%= article['creator.name'] %></p>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                <% } %>
+            </div>
+        </div>
+
+       <!--pagination -->
+       <%- include('parts/pagination', {articles: articles}); %>
+
+    </div>
+
+    <footer class="mt-6 text-center bg-main-blue  dark:bg-gray-900 text-white py-2 text-sm">
+        <p>&copy; 2021 YNTKTS</p>
+    </footer>
+
+</body>
+    <script src="asset/darkmode.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>

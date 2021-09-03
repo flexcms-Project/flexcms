@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Importing the css -->
+    <link rel="stylesheet" href="/asset/css/global.css">
+    <link rel="stylesheet" href="/asset/css/nav.css">
+    <link rel="stylesheet" href="/asset/css/dashboard.css">
+    <link rel="stylesheet" href="tailwind.css">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body x-data="{ 'showModal': false } " @keydown.escape="showModal = false" x-cloak>
+    <!-- Navbar -->
+    <%- include('parts/userNavbar', {}); %>
+
+    <!-- Main  -->
+    <div class="dashboard-container">
+        <div class="info col">
+            <div class="info-text">
+                <h1>
+                    <ion-icon name="person-circle-outline"></ion-icon>Hallo <%= user.name %>
+                </h1>
+            </div>
+            <div class="card-info-list">
+                <div class="card-info">
+                    <h2>Jumlah Artikel :</h2>
+                    <p><%= user.articles.length %></p>
+                </div>
+                <div class="card-info">
+                    <h2>komentar : </h2>
+                    <p>12</p>
+                </div>
+            </div>
+        </div>
+        <div class="article-container">
+            <div class="manage-list col">
+                <div class="web-manage">
+                    <p>web tool</p>
+                    <a href="/articles/create">
+                        <ion-icon name="create-outline"></ion-icon> buat artikel
+                    </a>
+                </div>
+                <div class="account-manage">
+                    <p>pengaturan akun</p>
+                    <a href="/users/setting">
+                        <ion-icon name="people-circle-outline"></ion-icon> setting akun
+                    </a>
+                    <a href="/users/logout">
+                        <ion-icon name="log-out-outline"></ion-icon> logout
+                    </a>
+                </div>
+            </div>
+            <div class="article-list">
+                <% if( user.articles.length > 0) { %>
+                    <% for(let article of user.articles) { %>
+                        <div class="article-card">
+                            <%- article.thumbnail %>
+                            <div class="left-card">
+                                <h3>
+                                    <%= article.title? article.title: 'title not found' %>
+                                </h3>
+                                <p>
+                                    <ion-icon name="calendar-outline"></ion-icon><%= article.createdAt? article.createdAt.toUTCString().split(' ').slice(1, 4).join(' '): 'date not found' %>
+                                    <span><ion-icon name="person-circle-outline"></ion-icon> Total Viewed: <%= article.totalViewed? article.totalViewed: 'total viewed not found' %></span>
+                                </p>
+                            </div>
+                            <div class="right-card">
+                                <a href=<%= `/articles/edit/${article.url}` %>>edit artikel</a>
+
+                                <% let ididid = article._id %>
+                                <a href="#" @click="showModal = true; ididid = '<%= ididid %>';">Hapus Artikel</a>
+                                    <!--POP UP warning for deleting content-->
+                                    <div class="overflow-auto" style="background-color: rgba(0, 0, 0, 0.082)" x-show="showModal"
+                                    :class="{ 'absolute inset-0 z-10 flex items-center justify-center': showModal }">
+                                    <!--Dialog-->
+                                    <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6"
+                                        x-show="showModal" @click.away="showModal = false"
+                                        x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90"
+                                        x-transition:enter-end="opacity-100 scale-100">
+                                        <!--Title-->
+                                        <div class="flex justify-between items-center pb-3">
+                                            <p class="text-2xl font-bold text-black">Hapus Artikel ?</p>
+                                            <div class="cursor-pointer z-50" @click="showModal = false">
+                                                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18"
+                                                    height="18" viewBox="0 0 18 18">
+                                                    <path
+                                                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <!--taruh function hapus artikel dibawah-->
+                                        <div class="flex justify-end pt-2">
+                                            <button
+                                                class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2"
+                                                @click="makeDELETErequest(ididid);  showModal = false">Iya</button>
+                                            <button
+                                                class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400"
+                                                @click="showModal = false">Tidak</button>
+                                        </div>
+                                    </div>
+                                    <!--/Dialog -->
+                                    </div>
+                            </div>
+                        </div>   
+                    <% } %>
+                <% }else{ %>
+                    <div class="article-card">
+                        <div class="article-card" style="text-align: center; padding-top: 2rem;">
+                            <h3 style="color: black;">you haven't made any article</h3>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importing the js-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/asset/js/dashboard.js"></script>
+    <!-- Importing the jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Importing the alpine.js -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</body>
+
+</html>

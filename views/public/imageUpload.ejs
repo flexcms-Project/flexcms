@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/asset/css/global.css">
+    <link rel="stylesheet" href="/asset/css/nav.css">
+    <link rel="stylesheet" href="/asset/css/uploadpict.css">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-logo">Upload Gambar</div>
+            <a href="/admin">Kembali</a>
+        </div>
+    </nav>
+    <div class="container file-up">
+        <div class="upper-info">
+            <h1>upload gambar disini</h1>
+            <p>
+            untuk menambahkan gambar di thumbnail dan dalam artikel silahkan up gambar disini lalu ambil link nya untuk di sematkan di dalam artikel dan juga thumbnail
+            </p>
+        </div>
+        <!-- file up gambar -->
+        <div class="file-up-container">
+            <h2>Upload disni</h2>
+            <form action="/post/imageupload" method="POST" enctype="multipart/form-data">
+                <div class="upload-file">
+                    <input type="file" name="gambar">
+                </div>
+                <button type="submit">upload gambar</button>
+            </form>
+        </div>
+        <!-- file list --> 
+    </div>
+    <div class="container">
+        <div class="card-list-text">
+            <h2>Daftar file yang di up</h2>
+        </div>
+        <div class="container-file-list">
+            <% if(typeof images != "undefined") { %>
+                <% for(let image of images) { %>
+                    <div class="file-card">
+                        <% let link = '/'+image.pictureLink %>
+                        <img src= <%= link %>>
+                        <div class="card-left">
+                            <p>gambar1</p>
+                            <p><%= link %></p>
+                        </div>
+                        <div class="card-right">
+                            <a href="#">copy link</a>
+                            <% let deleteLink = '/post/imageuploaddelete/' + image._id%>
+                            <a href= <%= deleteLink %> >delete</a>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+     
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

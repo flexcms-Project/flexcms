@@ -1,0 +1,112 @@
+.container-comment {
+    background-color: var(--secondary-color);
+    margin: 20px auto;
+    text-align: left ;
+    padding: 5px 15px ;
+    display: flex ;
+    flex-direction: column ;
+}
+
+.container-comment h2 {
+    margin: 15px auto;
+}
+
+.comment-list {
+    display: flex ;
+    flex-direction: column ;
+    background-color: var(--primary-color);
+    width: 80% ;
+    margin: 16px auto;
+    padding: 19px ;
+    border-radius: 8px ;
+    height: 500px ;
+    overflow: auto;
+}
+
+.comment-card {
+    width: 90% ;
+    background-color: var(--tertiary-color);
+    margin: 8px auto;
+    padding: 12px 10px ;
+    color: var(--primary-color);
+    border-radius: 6px ;
+    word-break: break-all ;
+
+}
+
+.comment-card p {
+    font-size: 16px ;
+    margin-bottom: 10px ;
+}
+
+.comment-card a{
+    text-decoration: none ;
+    font-size: 14px ;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 3px 5px ;
+}
+
+.comment-card h3 {
+    font-size: 18px ;
+}
+
+
+.comment-card.reply-card {
+    background-color: var(--secondary-color);
+    margin-top: 5px ;
+    margin-bottom: 12px ;
+}
+
+.comment-card.comment-card.reply-card p {
+    font-size: 13px ;
+}
+
+
+.comment-card.reply-card h3 {
+    font-size: 15px ;
+}
+
+.comment-card.reply-card a {
+    border: none ;
+}
+
+.comment-card button {
+    background-color: transparent;
+    text-decoration: none ;
+    font-size: 14px ;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 3px 5px ;
+    border-radius: 0 ;
+}
+
+.comment-card form {
+    margin-top: 10px ;
+    display: flex ;
+    flex-direction: column ;
+    width: 190px ;
+}
+
+.comment-card form button {
+    margin-top: 10px ;
+    width: 150px ;
+    border-radius: 3px ;
+    cursor: pointer;
+}
+
+.comment-card form textarea {
+    resize: none;
+    width: 190px ;
+    height: 80px;
+    border-radius: 3px ;
+    border: 1px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    outline: none;
+    padding: 5px ;
+    color: var(--primary-color);
+}
+
+.render-reply.hidden {
+    display: none ;
+}

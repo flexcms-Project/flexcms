@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMS-web</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/asset/css/global.css" />
+    <link rel="stylesheet" href="/asset/css/nav.css" />
+    <link rel="stylesheet" href="/asset/css/writearticle.css" />
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('parts/userNavbar2', {}); %>
+
+    <div class="container">
+        <!-- top title -->
+        <div class="text-icon">
+            <% if(typeof data != "undefined" && typeof status == "undefined") { %>
+                <h1>Edit Article</h1>
+                <p>Edit your article</p>
+            <% }else{ %>
+                <h1>Write Article</h1>
+                <p>Make your very own article with our app</p>
+            <% } %>
+        </div>
+
+        <!-- The form header initialization -->
+        <% if(typeof data != "undefined" && typeof status == "undefined") { %>
+            <form action= <%= `/articles/edit/${data.article.url}` %> id="forms" method="POST" enctype="application/x-www-form-urlencoded">
+        <% }else{ %>
+            <form action="/articles/create" method="POST" id="forms" enctype="application/x-www-form-urlencoded">
+        <% } %>
+
+        <!-- MESSAGE -->
+        <% if(typeof message != "undefined"){ %>
+            <p style="color: rgb(255, 102, 0)"><%= message %></p>
+        <% } %>
+
+        <!-- THE CONTENT -->
+        <% if(typeof data != "undefined") { %>
+            <div class="editor" id="styles" name="content" required><%- data.article.content %></div>
+            <textarea class="content val" name="content"></textarea>
+        <% }else{ %>
+            <div class="editor" id="styles" required>
+                <h1 class="ql-align-center"><span class="ql-size-large">This is the title of the article that you want to make, this title will shown up in the home page, please dont change any option except text align(left, right, center, justified) and please dont use any text edit like bold/italic/etc, otherwise your post will have some major bug </span></h1><br>
+                <p class="ql-align-center"><img src="/articlepictures/default-post-img.png"></p><br>
+                <p>this is where you write the simple and short description of your article, this description will shown up in the home page, in this description please dont change any option at all and please dont use any text edit like bold/italic/underline/etc, just use the default setting, otherwise your post will have some major bug.</p><br>
+                <p>after those there in the top(title, thumbnail picture, and description) has been filled, you can write the rest of the post here, we recommend to use the default text size, and the rest is up to you</p><br>
+                <p><strong>plase keep in mind, that the limit for every article is just 2mb, so please take a look at the size of the pictures or file that you upload</strong></p><br>
+                <p>the server will return error, if the article size is exceed the size limit</p><br>
+                <p><strong>you can delete all these example, it's just to show you the valid structure of the article</strong></p><br>
+            </div>
+            <textarea class="content val" name="content" ></textarea>
+        <% } %>
+       
+        <!-- THE SUBMIT BUTTON -->
+        <% if(typeof data != "undefined" && typeof status == "undefined"){%>
+            <button type="submit">update the article</button>
+        <% }else{ %>
+            <button type="submit">Save and Publish article</button>
+        <% } %>
+        
+        </form>
+    </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Main Quill library -->
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> 
+        <script src="/asset/js/writearticle.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+.cont-login {
+    height: 100vh ;
+    display: flex ;
+    justify-content: space-around ;
+    align-items: center ;
+}
+
+
+
+.login-form {
+    width: 30% ;
+    margin: 14px auto ;
+    text-align: center ;
+    background-color: var(--primary-color);
+    color: var(--primary-text);
+    border-radius: 10px ;
+    display: flex ;
+    flex-direction: column ;
+}
+
+.alert {
+    width: 50% ;
+    height: 50% ;
+    margin: 20px auto ;
+    background-color: rgb(253, 25, 25) ;
+    padding: 10px ;
+    border-radius: 5px ;
+}
+
+.success {
+    width: 50% ;
+    height: 50% ;
+    margin: 10px auto ;
+    background-color: rgb(25, 253, 158) ;
+    padding: 10px ;
+    border-radius: 5px ;
+}
+
+form {
+    display: flex ;
+    flex-direction: column ;
+}
+
+form label {
+    font-size: 16px ;
+    margin: 6px 0 ;
+    text-transform: uppercase ;
+}
+
+form input {
+    width: 50%  ;
+    margin: 10px auto ;
+    padding: 5px 10px ;
+    border-radius: 10px ;
+    border: none ;
+    background-color: var(--secondary-color);
+    transition: 0.6s ease ;
+}
+
+form input:focus {
+    outline: none ;
+    background-color: var(--tertiary-color);
+    width: 65% ;
+}
+
+form button {
+    width: 55% ;
+    margin: 20px auto ;
+    padding: 5px 10px ;
+    background-color: var(--secondary-color);
+    border: none ;
+    border-radius: 12px ;
+    cursor: pointer ;
+    transition: 0.6s ease ;
+}
+
+form button:hover {
+    text-transform: uppercase ;
+    background-color: var(--tertiary-color);
+}
+
+
+@media only screen and (max-width: 660px ){
+    body {
+        overflow-x: hidden ;
+    }
+
+    .login-form {
+        width: 80% ;
+    }
+
+    .cont-login {
+        margin: auto ;
+    }
+
+}

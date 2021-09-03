@@ -1,0 +1,55 @@
+.container {
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.inner {
+    display: flex ;
+    flex-direction: column ;
+    align-items: center;
+   
+}
+
+.inner h1 {
+    font-size: 9rem ;
+    animation: 6s animation infinite  ease reverse;
+    color: var(--primary-color);
+}
+
+.inner p {
+    font-size: 1.5rem;
+   text-align: center;
+   color: #000;
+    animation: 6s animation infinite  ease;
+}
+
+.inner a  {
+    margin-top: 20px ;
+    text-decoration: none ;
+    color: var(--primary-color);
+    font-weight: bold ;
+}
+
+@media only screen and (max-width : 660px ){
+    .inner h1 {
+        font-size: 6rem ;
+    }
+
+    .inner p {
+        font-size: 1rem ;
+    }
+
+}
+
+
+@keyframes animation {
+    from {
+        color: var(--primary-color);
+    }
+    to {
+        color: #000;
+    }
+}

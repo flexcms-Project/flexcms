@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <!-- fetching the CSS -->
+    <link rel="stylesheet" href="/tailwind.css">
+    <link rel="stylesheet" href="/asset/css/quill.css">
+    
+</head>
+<body class="bg-body-bg dark:bg-gray-800">
+    <!-- NAVBAR -->
+    <%- include('parts/navbar', {sub: sub}); %>
+    
+    <article class="container mx-auto mb-10 dark:bg-gray-600 rounded-md bg-bg-card px-6 py-4 mt-3 dark:text-white" >
+       <!-- tanggal -->
+        <div class="flex justify-beetwen mb-3 ">
+            <div class="flex items-center">
+                <ion-icon name="calendar-number-outline"></ion-icon>
+                <p class="ml-2 md:ml-4 font-bold text-xs"><%= post.createdAt.toUTCString().split(' ').slice(1, 5).join(' ') %></p>
+            </div>
+            <div class="flex items-center ml-5">
+                <ion-icon name="person-outline"></ion-icon>
+                <p class="ml-4 font-bold text-xs"><%= post['creator.name'] %></p>
+            </div>
+        </div>
+         <!-- render data dibawah gan -->
+        <div class="ql-snow">
+            <%- post.content %>
+        </div>
+    </article>
+    <!-- about -->
+    <% if(typeof post['creator.uuid'] != "undefined"){ %>
+        <div class="about my-7 mt-10 container md:w-3/6 w-5/6  mx-auto text-center px-2 py-3 bg-bg-card rounded-md shadow-lg dark:bg-gray-600 ">
+            <h2 class="font-bold text-2xl text-main-text dark:text-white">About Writer</h2>
+            <img src=<%= `/${post['creator.profilePicture']}` %> class="mx-auto my-5 rounded-full" >
+            <p class="md:text-md text-sm text-color-p dark:text-white">
+                <%= post['creator.name'] %>
+            </p>
+        </div>
+    <% } %>
+    <footer class="mt-6 text-center bg-main-blue  dark:bg-gray-900 text-white py-2 text-sm">
+        <p>&copy; 2021 YNTKTS</p>
+    </footer>
+</body>
+<script src="/asset/darkmode.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>

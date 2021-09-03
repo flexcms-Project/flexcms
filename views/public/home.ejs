@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"  class="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="tailwind.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-body-bg dark:bg-gray-800">
+    <!-- NAVBAR -->
+    <%- include('parts/navbar', {sub: sub}); %>
+
+    <div class="container mx-auto my-7 flex flex-col">
+        <div class="flex justify-center lg:justify-between flex-col lg:flex-row">
+           <!-- post utama & other post -->
+            <div class="flex mx-auto lg:mx-0 lg:w-8/12 flex-col">
+                <!-- main artivcle -->
+                <% if(typeof articles.mainArticle != "undefined" && articles.mainArticle != null) { %>
+                    <div class=" mx-auto sm:mx-auto w-11/12 md:w-full main-article my-5">
+                        <a href= <%=  `/${articles.mainArticle.url}` %> class="flex relative h-96 w-full">
+                            <!-- <img src="../public/asset/dumny.jpg" class=" md:absolute z-0 w-full h-full rounded-lg"> -->
+                            <%- articles.mainArticle.thumbnail %>
+                            <h3 class="text-main-text dark:text-white absolute z-3  pb-5 pt-9 bottom-0 text-center md:text-lg font-bold px-1 text-sm w-full">
+                                <%= articles.mainArticle.title? articles.mainArticle.title.split(' ').slice(0, 60).join(' '): 'title not found' %>
+                            </h3>
+                        </a>
+                    </div>
+                <% }else{ %>
+                    <div class=" mx-auto sm:mx-auto w-11/12 md:w-full main-article my-5">
+                        <a href= "#" class="flex relative h-96 w-full">
+                            <img src="/articlepictures/default-post-img.png" class=" md:absolute z-0 w-full h-full rounded-lg">
+                            <h3 class="text-main-text dark:text-white absolute z-3  pb-5 pt-9 bottom-0 text-center md:text-lg font-bold px-1 text-sm w-full">
+                                This is main article
+                            </h3>
+                        </a>
+                    </div>
+                <% } %>
+                
+                <h2 class="bg-main-blue text-center mb-4 w-3/6 mx-auto text-white rounded-xl dark:bg-gray-500 hidden md:block">
+                    recent post
+                </h2>
+                <!-- other post -->
+                <div class="flex article-list-other flex-wrap hidden md:flex">
+                    <% for(let article of articles.articlesPaginate.rows){ %>
+                        <a href= <%= `/${article.url}` %> class="card-other  w-5/6 md:w-5/12 lg:w-4/6 xl:w-5/12 bg-bg-card dark:bg-gray-700 rounded-lg mb-4 mx-auto hover:shadow-xl transform hover:-translate-y-1 transition duration-200">  
+                            <%- article.thumbnail %>
+                            <div class="py-2 px-5 dark:text-white">
+                                <h2 class="text-text-main text-base my-2 font-bold text-main-text dark:text-white">
+                                    <%= article.title? article.title.split(' ').slice(0, 20).join(' '): 'title not found' %>                            
+                                </h2>
+                                <p class="text-xs text-color-p dark:text-white">
+                                    <%= article.description? article.description.split(' ').slice(0, 40).join(' '): 'description not found' %>                                
+                                </p>
+                                <div class="flex text-xs justify-between mt-5 xl:w-5/6 text-color-p dark:text-white">
+                                    <div class="flex justify-between items-center">
+                                        <ion-icon name="calendar-outline" class="mr-2"></ion-icon>
+                                        <p><%= article.createdAt? article.createdAt.toUTCString().split(' ').slice(1, 4).join(' '): 'date not found' %></p>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <ion-icon name="person-outline" class="mr-2"></ion-icon>
+                                        <p><%= article['creator.name'] %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <% }%>
+                </div>
+            </div>
+            <!-- trend post -->
+            <div class="flex mx-auto lg:mx-0 lg:w-5/12 my-5 flex-col">
+                <h2 class="bg-main-blue text-center mb-6 w-3/6 mx-auto text-white rounded-xl dark:bg-gray-500">Most Viewed</h2>
+                <div class="article-trend-list flex flex-col md:flex-row flex-wrap lg:flex-col">
+                       
+                    <% for(let article of articles.mostViewedArticles) { %>   
+                        <a href= <%= `/${article.url}` %> class="card-trend w-5/6 md:w-6/12 lg:w-5/6 xl:w-4/6 bg-bg-card rounded-lg mb-4 mx-auto dark:bg-gray-700 hover:shadow-xl transform hover:-translate-y-1 transition duration-200">
+                            <div class="py-2 px-4 ">
+                                <h2 class="text-text-main text-base my-2 font-bold text-main-text dark:text-white ">
+                                    <%= article.title? article.title.split(' ').slice(0, 30).join(' '): 'title not found' %>
+                                </h2>
+                                <p class="text-xs text-color-p  dark:text-white">
+                                    <%= article.description? article.description.split(' ').slice(0, 40).join(' '): 'description not found' %>                                
+                                </p>
+                                <div class="flex text-xs justify-between mt-5 md:w-5/6 text-color-p  dark:text-white ">
+                                    <div class="flex justify-between items-center">
+                                        <ion-icon name="calendar-outline" class="mr-2"></ion-icon>
+                                        <p><%= article.createdAt? article.createdAt.toUTCString().split(' ').slice(1, 4).join(' '): 'date not found' %></p>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <ion-icon name="person-outline" class="mr-2"></ion-icon>
+                                        <p><%= article['creator.name'] %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <% } %>
+                        
+                        
+                </div>
+            </div>
+
+            <!-- title other post mobile -->
+            
+            <!-- other post mobile only -->
+            
+        </div>
+        
+        <!--pagination -->
+        <%- include('parts/pagination', {articles: articles}); %>
+
+    </div>
+    <footer class="mt-6 text-center bg-main-blue  dark:bg-gray-900 text-white py-2 text-sm">
+        <p>&copy; 2021 YNTKTS</p>
+    </footer>
+</body>
+<script src="asset/darkmode.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>

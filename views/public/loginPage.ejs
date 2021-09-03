@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/asset/css/global.css">
+    <link rel="stylesheet" href="/asset/css/login.css">
+    <link rel="stylesheet" href="/asset/css/nav.css">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-logo">Dashboard Web</div>
+        </div>
+    </nav>
+    <div class="container cont-login">
+        <div class="login-form">
+            <% if(typeof message != 'undefined'){ %>
+                <div class="alert">
+                    <%= message %>
+                </div>
+            <% } %>
+            <!-- <div class="success">
+                yoi gan 
+            </div> -->
+            <form action="/users/login" method="POST">
+                <label for="email">email</label>
+                <input type="email" name="email" required >
+                <label for="password">password</label>
+                <input type="password" name="password"required minlength="6">
+                <button type="submit">login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

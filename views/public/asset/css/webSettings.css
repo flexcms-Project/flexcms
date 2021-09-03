@@ -1,0 +1,102 @@
+.container-form {
+    margin: 20px auto ;
+    background-color: var(--secondary-color);
+    border-radius: 10px ;
+}
+
+form {
+    width: 80% ;
+    margin: 0 auto ;
+    display: flex ;
+    flex-direction: column ;
+    justify-content: space-between ;
+    color: var(--primary-color);
+
+}
+
+.container-form p{
+    text-align: center ;
+    padding-top: 10px ;
+    color: var(--primary-color);
+}
+
+.edit {
+    width: 50% ;
+    margin: 0 auto ;
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-between ;
+}
+
+.profile {
+    display: flex ;
+    flex-direction: column ;
+    padding: 5px ;
+    text-align: center ;
+    margin: 10px 0 ;
+}
+
+
+.profile h4 {
+    margin: 10px 0 ;
+    margin-bottom: 5px ;
+    font-size: 20px ;
+}
+
+.profile-pict img{
+    margin: 15px 0;
+    display: flex ;
+    position: relative ;
+    width: 100px ;
+    height: 100px ;
+}
+
+.other {
+    width: 60% ;
+    display: flex ;
+    flex-direction: column ;
+    margin: 10px auto;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.other label {
+    color: var(--primary-color);
+    width: 80% ;
+    display: block ;
+    text-align: left ;
+}
+
+.other input ,.other textarea {
+    margin: 10px 0 ;
+    width: 80% ;
+    padding: 4px 6px ;
+    outline: none ;
+    resize: none ;
+    border: none ;
+}
+
+.other button {
+    width: 50% ;
+    padding: 5px 3px ;
+    margin: 15px 0;
+    background-color: var(--primary-color);
+    color: var(--primary-text);
+    border: none ;
+    border-radius: 4px ;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 660px ){
+    .edit {
+        flex-direction: column ;
+        margin: auto;
+    }
+
+    .other {
+        width: 80% ;
+        margin: auto;
+    }
+}
