@@ -34,7 +34,7 @@ after you create the .env file on the top, now install the app with these comman
   * npm run db-migrate-up
   * npm run install-views
 - after all of the command on the top has been done, you can use npm run start-dev to start the app
-  * npm run start-dev
+  * npm run start-prod
 
 
 

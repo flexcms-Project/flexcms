@@ -21,7 +21,6 @@
     "sequelize": "^6.6.5"
   },
   "scripts": {
-    "start-dev": "nodemon dist/api/server.js",
     "start-prod": "node dist/server.js",
     "build": "tsc -w",
     "install-views": "npm install views/",
